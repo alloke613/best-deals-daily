@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang=en>
 <head>
-	<title>Best Deals Daily</title>
+	<title>Best Deal Daily</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -17,7 +17,7 @@
 			<div class="lds-css ng-scope"><div style="width:100%;height:100%" class="lds-pacman"><div><div></div><div></div><div></div></div><div><div></div><div></div></div></div></div>
 		</div>
 		<div id="signup-form" class="wrapper d-none">
-			<h1 id="title">Best Deals Daily</h1>
+			<h1 id="title">Best Deal Daily</h1>
 			<br>
 			<br>
 			<p class="sales-statement"><span class="sales-statement-phrase">Sign up now</span> for great deals daily. It is <span class="sales-statement-phrase">FREE for 200</span> subscribers.</p>
@@ -77,7 +77,7 @@
 				Welcome to join the community. 
 			</p>
 			<br>
-			<p class="success-statement">
+			<p id="check-email" class="success-statement">
 				Please check inbox of your email 
 				<br>
 				<span id="success-email">email</span> 

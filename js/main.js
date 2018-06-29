@@ -356,6 +356,7 @@ document.body.onload = function() {
       $('#loading').addClass('d-none');
       $('#success-page').removeClass('d-none');
       $('#success-email').html(email);
+      if (!error) $('#check-email').addClass('d-none');
     }
     else {
       $('#loading').addClass('d-none');

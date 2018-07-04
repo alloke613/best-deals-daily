@@ -137,3 +137,27 @@ p.sales-statement span.sales-statement-phrase {
 	font-weight: 700;
 	animation: blinker 1s linear infinite;
 }
+
+.required-field {
+	background: rgba(255, 148, 137, 0.3);
+}
+
+.required-field::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	color: #efefef;
+}
+
+.required-field::-moz-placeholder { /* Firefox 19+ */
+	color: #efefef;
+}
+
+.required-field:-ms-input-placeholder { /* IE 10+ */
+	color: #efefef;
+}
+
+.required-field:-moz-placeholder { /* Firefox 18- */
+	color: #efefef;
+}
+
+.required-field-message {
+	font-weight: 900;
+}

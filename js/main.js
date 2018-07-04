@@ -1,4 +1,4 @@
-document.body.onload = function() {
+document.body.onload = function () {
   // SELECTING...
   // T
   var t1 = document.getElementById('t1');
@@ -239,30 +239,28 @@ document.body.onload = function() {
     tspans[0].setAttribute('dy', '0');
   }
   for (var i = tspans.length-1; i >= 0; i--) {
-      textTl.to(tspans[i], 0.3, {opacity: 1}, 1 + (tspans.length-1-i)*0.05);
-    }
+    textTl.to(tspans[i], 0.3, {opacity: 1}, 1 + (tspans.length-1-i)*0.05);
+  }
+
   addUnderlineTween(textTl, underlines[0], 0.5, 664, 153, 370, 167, 0.2);
   addUnderlineTween(textTl, underlines[1], 0.51, 670, 160, 370, 175, 0.3);
   addUnderlineTween(textTl, underlines[2], 0.52, 678, 168, 370, 183, 0.4);
   addUnderlineTween(textTl, underlines[3], 0.53, 686, 176, 370, 191, 0.5);
 
   mainTimeline.add(textTl, 2); 
-  
-  
-
   mainTimeline.timescale = 0.6;
   mainTimeline.play();
 
-  function addLineDecTween(tl, line, duration, x, y, delay) {
-      tl.to(line.x2.baseVal, duration, {value: x, ease: Quart.easeInOut}, delay);
-      tl.to(line.y2.baseVal, duration, {value: y, ease: Quart.easeInOut}, delay);
-      tl.to(line.x1.baseVal, duration, {value: x, ease: Quart.easeInOut}, delay+duration);
-      tl.to(line.y1.baseVal, duration, {value: y, ease: Quart.easeInOut}, delay+duration);
-      tl.to(line, 0.01, {opacity: 1}, delay);
-      tl.to(line, 0.01, {opacity: 0}, delay+(duration*2));
+  function addLineDecTween (tl, line, duration, x, y, delay) {
+    tl.to(line.x2.baseVal, duration, {value: x, ease: Quart.easeInOut}, delay);
+    tl.to(line.y2.baseVal, duration, {value: y, ease: Quart.easeInOut}, delay);
+    tl.to(line.x1.baseVal, duration, {value: x, ease: Quart.easeInOut}, delay+duration);
+    tl.to(line.y1.baseVal, duration, {value: y, ease: Quart.easeInOut}, delay+duration);
+    tl.to(line, 0.01, {opacity: 1}, delay);
+    tl.to(line, 0.01, {opacity: 0}, delay+(duration*2));
   }
 
-  function addLineDecOutTween(tl, line, duration, x1, y1, x2, y2, delay) {
+  function addLineDecOutTween (tl, line, duration, x1, y1, x2, y2, delay) {
     tl.to(line.x1.baseVal, duration, {value: x1, ease: Quart.easeInOut}, delay);
     tl.to(line.y1.baseVal, duration, {value: y1, ease: Quart.easeInOut}, delay);
     tl.to(line.x2.baseVal, duration, {value: x2, ease: Quart.easeInOut}, delay);
@@ -273,14 +271,14 @@ document.body.onload = function() {
     tl.to(line, 0.01, {opacity: 0}, delay+(duration*2));
   }
 
-  function addDotDecTween(tl, dot, duration, r, delay) {
-      tl.to(dot.rx.baseVal, duration, {value: r, ease: Quart.easeOut}, delay);
-      tl.to(dot.ry.baseVal, duration, {value: r, ease: Quart.easeOut}, delay);
-      tl.to(dot.rx.baseVal, duration, {value: 0, ease: Quart.easeIn}, delay+duration);
-      tl.to(dot.ry.baseVal, duration, {value: 0, ease: Quart.easeIn}, delay+duration);
+  function addDotDecTween (tl, dot, duration, r, delay) {
+    tl.to(dot.rx.baseVal, duration, {value: r, ease: Quart.easeOut}, delay);
+    tl.to(dot.ry.baseVal, duration, {value: r, ease: Quart.easeOut}, delay);
+    tl.to(dot.rx.baseVal, duration, {value: 0, ease: Quart.easeIn}, delay+duration);
+    tl.to(dot.ry.baseVal, duration, {value: 0, ease: Quart.easeIn}, delay+duration);
   }
 
-  function addUnderlineTween(tl, ul, duration, x2, y2, x1, y1, delay) {
+  function addUnderlineTween (tl, ul, duration, x2, y2, x1, y1, delay) {
     tl.to(ul.x2.baseVal, duration, {value: x2, ease: Quad.easeInOut}, delay);
     tl.to(ul.y2.baseVal, duration, {value: y2, ease: Quad.easeInOut}, delay);
     tl.to(ul.x1.baseVal, duration, {value: x1, ease: Quad.easeInOut}, delay+duration);
@@ -288,7 +286,7 @@ document.body.onload = function() {
   }
   
   // for Safari
-  function updatePolyline(line, points) {
+  function updatePolyline (line, points) {
     if (points.x3) {
       line.setAttribute('points', points.x0+','+points.y0+' '+points.x1+','+points.y1+' '+points.x2+','+points.y2+' '+points.x3+','+points.y3);
     } else {
@@ -310,6 +308,11 @@ document.body.onload = function() {
     svg.style.width = window.innerWidth+'px';
   }
 
+  function getApiUrl (uri) {
+    if (typeof uri == 'undefined' || typeof uri == null || uri == "") uri = "";
+    return window.location.protocol + '//bizdeal.bizstore.io' + uri;
+  }
+
   function GetURLParameter (sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1));
     var sURLVariables = sPageURL.split('&');
@@ -321,16 +324,14 @@ document.body.onload = function() {
     }
   }
 
-  function initiate() {
+  function initiate () {
     var error = GetURLParameter('error');
     var message = GetURLParameter('message');
     var success = GetURLParameter('success');
     var email = GetURLParameter('email');
 
-    var localUrl = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port; 
-
     BizApp.login({
-      url: localUrl + "/bizapp/login"
+      url: getApiUrl("/bizapp/login")
     }, function (error, userData) {
       if (!userData.err) {
         $('#walletId').val(userData);
@@ -365,4 +366,34 @@ document.body.onload = function() {
   }
 
   initiate();
+
+  $('#submitBtn').click(function () {
+    if ($('#email').val() === "" || typeof $('#email').val() === null || typeof $('#email').val() === undefined) {
+      $('#email').addClass('required-field');
+      $('#required-statement').addClass('required-field-message');
+    }
+    else {
+      $('#email').removeClass('required-field');
+      $('#required-statement').removeClass('required-field-message');
+    };
+
+    $.ajax({
+      type: 'POST',
+      url: getApiUrl(),
+      contentType: 'application/x-www-form-urlencoded',
+      datatype: 'json',
+      data: {
+        email: $('#email').val(),
+        firstName: $('#firstName').val(),
+        lastName: $('#lastName').val(),
+        walletId: $('#walletId').val()
+      },
+      success: function (data, status, jq) {
+        window.location.href = data;
+      },
+      error: function (jq, status, err) {
+        window.location.href = '/?error="' + err + '"';
+      }
+    });
+  });
 }

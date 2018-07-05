@@ -375,25 +375,25 @@ document.body.onload = function () {
     else {
       $('#email').removeClass('required-field');
       $('#required-statement').removeClass('required-field-message');
-    };
 
-    $.ajax({
-      type: 'POST',
-      url: getApiUrl(),
-      contentType: 'application/x-www-form-urlencoded',
-      datatype: 'json',
-      data: {
-        email: $('#email').val(),
-        firstName: $('#firstName').val(),
-        lastName: $('#lastName').val(),
-        walletId: $('#walletId').val()
-      },
-      success: function (data, status, jq) {
-        window.location.href = data;
-      },
-      error: function (jq, status, err) {
-        window.location.href = '/?error="' + err + '"';
-      }
-    });
+      $.ajax({
+        type: 'POST',
+        url: getApiUrl(),
+        contentType: 'application/x-www-form-urlencoded',
+        datatype: 'json',
+        data: {
+          email: $('#email').val(),
+          firstName: $('#firstName').val(),
+          lastName: $('#lastName').val(),
+          walletId: $('#walletId').val()
+        },
+        success: function (data, status, jq) {
+          window.location.href = getApiUrl(data);
+        },
+        error: function (jq, status, err) {
+          window.location.href = getApiUrl('/?error="' + err + '"');
+        }
+      });
+    };
   });
 }
